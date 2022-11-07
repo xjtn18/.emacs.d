@@ -1,10 +1,14 @@
 (require 'package)
 ;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
+;; Update all custom emacs search paths:
 (setq package-user-dir "~/.emacs.d/elpa")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/my_themes")
+
 (package-initialize)
 
-;; @NOTE: Uncomment this to refresh the package list (when setting up for the first time, or adding a new package manager)
+;; NOTE: Uncomment this to refresh the package list (when setting up for the first time, or adding a new package manager)
 ;;(package-refresh-contents)
 
 
@@ -13,16 +17,16 @@
 ;; Also be aware that Elpa is the standard GNU emacs package manager; Melpa is another that offers
 ;;     most of the packages I use. The line at the top is where we add Melpa to the package archives.
 
-;; --- My package list ---
-;; Evil (Vim emulation layer)
-;; naysayer (Jon Blow color scheme)
-;; hl-todo
+;; ------ My package list ------
+;; Evil      (Vim emulation layer)
+;; hl-todo   (To highlight specific words in files)
+;; rjsx-mode (For jsx formatting, highlighting, and functionality)
+;; naysayer  (Jon Blow color scheme)
 
 
 
 (require 'evil)
 (evil-mode 1)
-
 
 
 
@@ -71,12 +75,9 @@
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;; Add to the custom-theme-load-path
-(add-to-list 'custom-theme-load-path "~/.emacs.d/my_themes")
 
 ;; Theme
 (load-theme 'jake_wheatgrass t)
@@ -113,7 +114,7 @@
 
 
 ;; disable any bold text
-(set-face-bold-p 'bold nil)
+;;(set-face-bold-p 'bold nil)
 
 
 ;; automatically set to fullscreen.
@@ -134,6 +135,12 @@
   (electric-pair-local-mode 1) ;; Emacs 25
 )
 (add-hook 'csharp-mode-hook 'my-csharp-mode-hook)
+
+
+
+;; enter rjsx mode when opening JS files
+(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -151,7 +158,7 @@
 	["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-safe-themes
 	'("0c41069758f9cede81c3f3cec4c739aafa637a445470886c018113fcfb1675f1" default))
- '(initial-buffer-choice "C:/dev/")
+ '(initial-buffer-choice "C:/dev")
  '(linum-format " %5i ")
  '(menu-bar-mode nil)
  '(package-selected-packages '(hl-todo naysayer-theme evil))
