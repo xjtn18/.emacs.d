@@ -21,12 +21,27 @@
 ;; Evil      (Vim emulation layer)
 ;; hl-todo   (To highlight specific words in files)
 ;; rjsx-mode (For jsx formatting, highlighting, and functionality)
+;; csharp-mode (Formatting and highlighting for C#)
 ;; naysayer  (Jon Blow color scheme)
 
 
 
 (require 'evil)
 (evil-mode 1)
+
+
+(require 'org)
+;; Org mode - set colors for emphasized text (bold, italic, etc.)
+(add-to-list 'org-emphasis-alist '("*" (:weight bold :foreground "yellow")))
+(add-to-list 'org-emphasis-alist '("/" (:slant oblique :foreground "sky blue")))
+;; Change font when in org mode
+(defun my/org-font ()
+  (face-remap-add-relative 'default :family "DejaVu Sans Mono"))
+(add-hook 'org-mode-hook 'my/org-font)
+;; Hide the text markdown characters (*, ?, _, etc.)
+(setq org-hide-emphasis-markers t)
+;; Default startup 'fold' configuration
+(setq org-startup-folded t)
 
 
 
@@ -46,7 +61,7 @@
 
 ;; Define evil colon command to open my main dev directory.
 (defun my-open-dev () (interactive)
-  (find-file "C:/dev"))
+  (find-file "~/dev"))
 (evil-ex-define-cmd "dev" 'my-open-dev)
 
 
@@ -114,7 +129,7 @@
 
 
 ;; disable any bold text
-;;(set-face-bold-p 'bold nil)
+(set-face-bold-p 'bold nil)
 
 
 ;; automatically set to fullscreen.
@@ -158,7 +173,7 @@
 	["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-safe-themes
 	'("0c41069758f9cede81c3f3cec4c739aafa637a445470886c018113fcfb1675f1" default))
- '(initial-buffer-choice "C:/dev")
+ '(initial-buffer-choice "~/dev")
  '(linum-format " %5i ")
  '(menu-bar-mode nil)
  '(package-selected-packages '(hl-todo naysayer-theme evil))
