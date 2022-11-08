@@ -100,9 +100,9 @@
 
 
 ;; Define the width of a tab
-(setq-default tab-width 3)
-(setq-default evil-shift-width 3)
-(setq c-basic-offset 3)
+(setq-default tab-width 4)
+(setq-default evil-shift-width 4)
+(setq c-basic-offset 4)
 
 
 ;; prevent emacs from making backups of edited files.
@@ -177,14 +177,15 @@
  '(linum-format " %5i ")
  '(menu-bar-mode nil)
  '(package-selected-packages '(hl-todo naysayer-theme evil))
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(scroll-bar-mode nil))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Liberation Mono" :foundry "outline" :slant normal :weight normal :height 130 :width normal)))))
+ '(default ((t (:family "Liberation Mono" :foundry "outline" :slant normal :weight normal :height 110 :width normal)))))
 
 
 
