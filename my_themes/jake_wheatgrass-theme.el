@@ -28,7 +28,7 @@ of green, brown, and blue.")
 (let ((class '((class color) (min-colors 89))))
   (custom-theme-set-faces
    'jake_wheatgrass
-   `(default ((,class (:foreground "wheat" :background "gray13"))))
+   `(default ((,class (:foreground "wheat" :background "gray20"))))
    `(cursor ((,class (:background "thistle"))))
    `(error ((,class (:foreground "salmon1"))))
    `(warning ((,class (:foreground "orange"))))
