@@ -93,16 +93,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-
 ;; Theme
 (load-theme 'jake_wheatgrass t)
-;;(load-file "~/.emacs.d/my_themes/jake_wheatgrass-theme.el")
 
 
 ;; Define the width of a tab
 (setq-default tab-width 4)
 (setq-default evil-shift-width 4)
 (setq c-basic-offset 4)
+
+;; The variable below is declared from rjsx-mode
+(setq sgml-basic-offset 4)
 
 
 ;; prevent emacs from making backups of edited files.
@@ -157,6 +158,10 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode)) ;; automatically adds .jsx files
 
 (good-scroll-mode 1)
+
+;; Native emacs minor modes
+(which-function-mode 1) ;; display function name where cursor resides
+(electric-pair-mode 1) ;; auto enclose parentheses and braces
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
