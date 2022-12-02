@@ -98,9 +98,11 @@
 
 
 ;; Define the width of a tab
+(setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq-default evil-shift-width 4)
 (setq c-basic-offset 4)
+(setq c-backspace-function 'delete-backward-char)
 
 ;; The variable below is declared from rjsx-mode
 (setq sgml-basic-offset 4)
