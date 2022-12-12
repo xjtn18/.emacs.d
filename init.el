@@ -98,11 +98,11 @@
 
 
 ;; Define the width of a tab
-(setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq-default evil-shift-width 4)
 (setq c-basic-offset 4)
 (setq c-backspace-function 'delete-backward-char)
+;;(setq-default indent-tabs-mode nil)
 
 ;; The variable below is declared from rjsx-mode
 (setq sgml-basic-offset 4)
@@ -124,9 +124,10 @@
 
 (global-hl-todo-mode 1)
 (setq hl-todo-keyword-faces
-	'(("TODO"   . "#e8ce27")
-	  ("NOTE"  . "#db621d")
-	  ("FIXME"  . "#eb4034")
+	'(("TODO"       . "#e8ce27")
+	  ("NOTE"       . "#db621d")
+	  ("FIXME"      . "#eb4034")
+	  ("NOCHECKIN"  . "#e8ce27")
 	 )
 )
 
@@ -135,8 +136,11 @@
 (set-face-bold-p 'bold nil)
 
 
-;; automatically set to fullscreen.
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; window settings
+;;(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(if (window-system) (set-frame-size (selected-frame) 110 70))
+(if (window-system) (set-frame-position (selected-frame) 1300 60))
+
 
 ;; use visual flash when doing an illegal action, instead of the annoying windows bell sound
 (setq visible-bell t)
@@ -195,7 +199,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Liberation Mono" :foundry "outline" :slant normal :weight normal :height 110 :width normal)))))
+ '(default ((t (:family "Liberation Mono" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))
 
 
 
