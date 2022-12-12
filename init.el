@@ -32,8 +32,13 @@
 
 (require 'org)
 ;; Org mode - set colors for emphasized text (bold, italic, etc.)
-(add-to-list 'org-emphasis-alist '("*" (:weight bold :foreground "dark orange")))
-(add-to-list 'org-emphasis-alist '("/" (:slant oblique :foreground "DodgerBlue1")))
+;; --- For dark color schemes
+;;(add-to-list 'org-emphasis-alist '("*" (:weight bold :foreground "yello")))
+;;(add-to-list 'org-emphasis-alist '("/" (:slant oblique :foreground "sky blue")))
+
+;; --- For light color schemes
+;;(add-to-list 'org-emphasis-alist '("*" (:weight bold :foreground "dark orange")))
+;;(add-to-list 'org-emphasis-alist '("/" (:slant oblique :foreground "DodgerBlue1")))
 ;; Change font when in org mode
 (defun my/org-font ()
   (face-remap-add-relative 'default :family "DejaVu Sans Mono"))
@@ -84,7 +89,7 @@
 )
 (evil-ex-define-cmd "td" 'my-goto-custom-themes)
 
-;; THE DEFAULT THEME DIRECTORY PATH IS = C:\Program Files\Emacs\x86_64\share\emacs\27.2\etc\themes
+;; THE DEFAULT THEME DIRECTORY PATH IS = C:\Program Files\Emacs\x86_64\share\emacs\{version}\etc\themes
 
 
 ;; Increase/decrease font size with Control +/- if you want (otherwise you can just C-scroll)
@@ -96,7 +101,7 @@
 
 
 ;; Theme
-(load-theme 'jake-leuven t)
+(load-theme 'jake_wheatgrass t)
 
 
 ;; Define the width of a tab
