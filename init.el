@@ -105,7 +105,27 @@
 )
 (evil-ex-define-cmd "td" 'my-goto-custom-themes)
 
-;; THE DEFAULT THEME DIRECTORY PATH IS = C:\Program Files\Emacs\x86_64\share\emacs\{version}\etc\themes
+
+;; Set evil command to get the json path under the cursor (doesnt even work, nice)
+;; NOTE - this is a really jank plugin. The paths will only work/be correct if the entire file is valid JSON and if you are running the command when the cursor is within a STRING.
+(require 'json-snatcher)
+(evil-ex-define-cmd "jsp" 'jsons-print-path)
+
+;; Python pretty print dictionaries in JSON format
+(defun python-prettyprint-region ()
+  (interactive)
+  (let ( (new-buffer-name "*pprint*") (selection (buffer-substring-no-properties (region-beginning) (region-end))))
+    (if (bufferp new-buffer-name)
+      (kill-buffer new-buffer-name))
+    (call-process
+     "python"
+     nil
+     new-buffer-name nil
+     "-c"
+     "import ast; import json; import sys; x=ast.literal_eval(sys.argv[1]); print(json.dumps(x,indent=4))"
+     selection)
+    (pop-to-buffer new-buffer-name)))
+(evil-ex-define-cmd "pjs" 'python-prettyprint-region)
 
 
 ;; Increase/decrease font size with Control +/- if you want (otherwise you can just C-scroll)
@@ -118,6 +138,7 @@
 
 ;; Theme
 (load-theme 'classic t)
+;; THE DEFAULT THEME DIRECTORY PATH IS = C:\Program Files\Emacs\x86_64\share\emacs\{version}\etc\themes
 
 
 ;; Define the width of a tab
@@ -171,6 +192,17 @@
 (setq visible-bell t)
 
 
+;; Sets cursor to not skip (visual) lines on long wrapped lines
+(global-visual-line-mode 1)
+;; Make movement keys work move across visual lines rather than logical lines
+(define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+(define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+(define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+; Make horizontal movement cross lines                                    
+(setq-default evil-cross-lines t)
+
+
 ;; Save on focus lost
 (add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
 
@@ -197,6 +229,7 @@
 ;; Native emacs minor modes
 (which-function-mode 1) ;; display function name where cursor resides
 (electric-pair-mode 1) ;; auto enclose parentheses and braces
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
