@@ -22,12 +22,28 @@
 ;; hl-todo   (To highlight specific words in files)
 ;; rjsx-mode (For jsx formatting, highlighting, and functionality)
 ;; csharp-mode (Formatting and highlighting for C#)
+;; yaml-mode (Formatting and highlighting for YAML)
+;; python-mode (Formatting and highlighting for Python)
 ;; naysayer  (Jon Blow color scheme)
 
 
 
 (require 'evil)
 (evil-mode 1)
+
+;; Setup the undo-tree to get C-r 'redo' functionality
+;; 'use-package' is a 3rd party package - may or may not be needed to get redo undo-tree working - this block was copied from Reddit.
+(require 'use-package)
+(use-package undo-tree
+			 :ensure t
+			 :after evil
+			 :diminish
+			 :config
+			 (evil-set-undo-system 'undo-tree)
+			 (global-undo-tree-mode 1))
+;; tell undo-tree to save history files into a seperate directory
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+
 
 
 (require 'org)
@@ -101,7 +117,7 @@
 
 
 ;; Theme
-(load-theme 'jake_wheatgrass t)
+(load-theme 'classic t)
 
 
 ;; Define the width of a tab
@@ -184,8 +200,6 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
 
 
 
