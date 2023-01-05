@@ -127,6 +127,7 @@
 ;;(set-face-background hl-line-face "#1C212B")
 
 
+
 ;; Enable TODO highlighting
 
 (global-hl-todo-mode 1)
@@ -156,6 +157,10 @@
 
 ;; Save on focus lost
 (add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
+
+
+;; Enable python jedi package (auto-complete)
+;;(add-hook 'python-mode-hook 'jedi:setup)
 
 
 
