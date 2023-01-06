@@ -105,6 +105,12 @@
 )
 (evil-ex-define-cmd "td" 'my-goto-custom-themes)
 
+;; Open my WID scrum buffer
+(defun my-goto-wid-buffer () (interactive)
+  (find-file "~/dev/notes/personal/WID.org")
+)
+(evil-ex-define-cmd "wid" 'my-goto-wid-buffer)
+
 
 ;; Set evil command to get the json path under the cursor (doesnt even work, nice)
 ;; NOTE - this is a really jank plugin. The paths will only work/be correct if the entire file is valid JSON and if you are running the command when the cursor is within a STRING.
