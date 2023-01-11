@@ -200,6 +200,9 @@
 
 ;; Sets cursor to not skip (visual) lines on long wrapped lines
 (global-visual-line-mode 1)
+;;(setq-default bidi-display-reordering nil)
+(setq bidi-inhibit-bpa t)
+(setq-default bidi-paragraph-direction 'left-to-right)
 ;; Make movement keys work move across visual lines rather than logical lines
 (define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
 (define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
